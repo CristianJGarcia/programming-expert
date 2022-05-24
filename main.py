@@ -1,8 +1,41 @@
-while True:
-    num = input("Enter a number: ")
+import random
 
+# Write your code here.
+# Make sure to use `random.randint` to pick your random number.
+
+while True:
     try:
-        num = float(num)
+        start = int(input("Enter the start of the range: "))
         break
-    except ValueError:
-        print("Not a valid float, try again!")
+    except ValueError as e:
+        print("Please enter a valid number.")
+
+while True:
+    try:
+        end = int(input("Enter the end of the range: "))
+        if end < start:
+            print("Please enter a valid number.")
+            continue
+        else:
+            break
+    except ValueError as e:
+        print("Please enter a valid number.")
+
+rand_number = random.randint(int(start), int(end))
+print(rand_number)
+attempts = 0
+
+while True:
+    try:
+        guess = int(input("Guess a number: "))
+        attempts += 1
+
+        if int(guess) == rand_number:
+            print(f"You guessed the number in {attempts} attempts")
+            break
+    except ValueError as e:
+        print("Please enter a valid number.")
+
+
+
+
